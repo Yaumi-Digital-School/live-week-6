@@ -29,7 +29,6 @@
                     @if ($task['is_done'] == 0)
                     <div class="task-item">
                         <input type="checkbox" name="todos_item[]" class="task-checkbox" value="<?php echo $task['id'] ?>" id="todo-<?php echo $task['id'] ?>" />
-
                         <span class="<?php if ($task['is_done'] == 1) echo "mark-done" ?>"><?php echo $task['name']; ?></span>
                         </span>
                     </div>
