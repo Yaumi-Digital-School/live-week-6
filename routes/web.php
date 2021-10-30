@@ -24,5 +24,8 @@ Route::get('/todo', function (\Illuminate\Http\Request $request) {
 })->name('todo.index');
 
 Route::post('/todo/add', function (\Illuminate\Http\Request $request) {
-    return "Route untuk menambah task baru";
+    $input_data = $request->all();
+    // @dd($input_data["input_task"]);
+    return "Route untuk menambah task baru " . $input_data['input_task'];
+    // return redirect('/todo');
 })->name('todo.add');
