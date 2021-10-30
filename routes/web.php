@@ -17,11 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/todo', function(\Illuminate\Http\Request $request) {
+Route::get('/todo', function (\Illuminate\Http\Request $request) {
     $tasks = \App\Models\Task::$data;
+    // return @dd($tasks);
     return view('index')->with('tasks', $tasks);
 })->name('todo.index');
 
-Route::post('/todo/add', function(\Illuminate\Http\Request $request) {
+Route::post('/todo/add', function (\Illuminate\Http\Request $request) {
     return "Route untuk menambah task baru";
 })->name('todo.add');
