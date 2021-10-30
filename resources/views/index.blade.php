@@ -11,7 +11,7 @@
 <body>
     <div class="main-app">
         <div class="container">
-            <h1 class="title">Todo App OOP</h1>
+            <h1 class="title">Todo App Laravel</h1>
 
             <!-- Section Input Task -->
             <div class="section-input">
@@ -25,15 +25,16 @@
             <!-- Section Task yang belum Complete -->
             <div class="section-task">
                 <!-- TODO: Section task hanya berisi task yang belum done (is_done = 0) -->
-                @foreach ($tasks as $task)
-                    @if ($task['is_done'] == 0)
+                <?php foreach ($tasks as $task) {
+                    if ($task['is_done'] == 0) { ?>
                     <div class="task-item">
                         <input type="checkbox" name="todos_item[]" class="task-checkbox" value="<?php echo $task['id'] ?>" id="todo-<?php echo $task['id'] ?>" />
                         <span class="<?php if ($task['is_done'] == 1) echo "mark-done" ?>"><?php echo $task['name']; ?></span>
                         </span>
                     </div>
-                    @endif
-                @endforeach
+                    <?php }
+                }
+                ?>
             </div>
 
             <!-- Section Task yang sudah Complete -->
