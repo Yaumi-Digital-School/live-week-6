@@ -27,42 +27,40 @@
                 <!-- Section Task yang belum Complete -->
                 <div class="section-task">
                     <!-- TODO: Section task hanya berisi task yang belum done (is_done = 0) -->
-                    <?php foreach ($tasks as $task) {
-                        if ($task['is_done'] == 0) {
-                        ?>
+                    @foreach ($tasks as $task) 
+                        @if ($task['is_done'] == 0) 
                         <div class="task-item">
                                 <input type=
                                        "checkbox"
                                        name="todos_item[]"
                                        class="task-checkbox"
-                                       value="<?php echo $task['id'] ?>"
-                                       id="todo-<?php echo $task['id'] ?>"/>
-                                <span class="<?php if ($task['is_done'] == 1) echo "mark-done" ?>"><?php echo $task['name']; ?></span>
-                                <!-- <button type="submit" class="btn-remove" value="<?php echo $task['id']; ?>">- Del</button> -->
+                                       value="{{$task['id']}}"
+                                       id="todo-{{$task['id']}}"/>
+                                <span class="@if ($task['is_done'] == 1) {{mark-done}} @endif">{{$task['name']}}</span>
+                                <!-- <button type="submit" class="btn-remove" value=" echo {{$task['id']}}">- Del</button> -->
                         </div>
-                    <?php }
-                    }
-                    ?>
+                        @endif
+                    @endforeach
+    
                 </div>
 
                 <!-- Section Task yang sudah Complete -->
                 <div class="section-task-done">
                     <h4>Completed</h4>
-                    <?php foreach ($tasks as $task) {
-                            if ($task['is_done'] == 1) { ?>
+                    @foreach ($tasks as $task) 
+                            @if ($task['is_done'] == 1) 
                         <div class="task-item" style="margin: 20px 0; border: solid 1px cornflowerblue">
                             <input type="checkbox"
                                    name="todos_item[]"
                                    class="task-checkbox"
-                                   value="<?php echo $task['id'] ?>"
+                                   value=" {{$task['id']}}"
                                    checked
-                                   id="todo-<?php echo $task['id']?>"/>
-                            <span class="mark-done"><?php echo $task['name']; ?></span>
-                            <!-- <button type="submit" class="btn-remove" value="<?php echo $task['id']; ?>">- Del</button> -->
+                                   id="todo-{{$task['id']}}"/>
+                            <span class="mark-done"> {{$task['name']}}</span>
+                            <!-- <button type="submit" class="btn-remove" value=" $task['id']; ?>">- Del</button> -->
                         </div>
-                    <?php }
-                        }
-                    ?>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>
