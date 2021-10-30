@@ -29,7 +29,8 @@
                 
                 <?php foreach ($tasks as $task) {
                     if ($task["is_done"] == 0) {
-                ?>
+                ?>      
+                 <a href="/todo/change?task_id=<?php echo $task['id'] ?>">
                         <div class="task-item">
                             <input type="checkbox" name="todos_item[]" class="task-checkbox" value="" id="todo-{{ $task["name"] }}
 
@@ -39,6 +40,7 @@
                                 <button type="submit" name="remove" value="{{ $task["id"] }}" class="remove-button">X</button>
                             </form>
                         </div>
+                    </a>
                 <?php }
                 }
                 ?>
@@ -49,6 +51,7 @@
                 <h4>Completed</h4>
                 <?php foreach ($tasks as $task) {
                     if ($task["is_done"] == 1) { ?>
+                        <a href="/todo/change?task_id=<?php echo $task['id'] ?>">
                         <div class="task-item" style="margin: 20px 0; border: solid 1px cornflowerblue">
                             <input type="checkbox" name="todos_item[]" class="task-checkbox" value="{{ $task["id"] }}" checked id="todo-{{ $task["id"] }}" />
                             <span class="mark-done">{{ $task["name"] }}</span>
@@ -56,6 +59,7 @@
                                 <button type="submit" name="remove" value="{{ $task["id"] }}" class="remove-button">X</button>
                             </form>
                         </div>
+                    </a>
                 <?php }
                 }
                 ?>
