@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/todo', function(\Illuminate\Http\Request $request) {
     $tasks = \App\Models\Task::$data;
+    // dd($tasks);
     return view('index')->with('tasks', $tasks);
 })->name('todo.index');
 
