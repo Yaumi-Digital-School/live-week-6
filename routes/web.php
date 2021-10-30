@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/todo', function(\Illuminate\Http\Request $request) {
+Route::get('/todo', function() {
     $tasks = \App\Models\Task::$data;
-    return view('index')->with('tasks', $tasks);
-})->name('todo.index');
+    return view('main.app_index')->with('tasks', $tasks);
+});
 
-Route::post('/todo/add', function(\Illuminate\Http\Request $request) {
-    return "Route untuk menambah task baru";
+Route::post('/todo/add', function(Request $request) {
+    $newTask = $request->get('input_task');
+    return "Data yang ingin ditambah ". $newTask;
 })->name('todo.add');
+
+Route::get('/todo/change', function(Request $request){
+    $taskId = $request->get('task_id');
+    return "Data yang ingin diubah ". $taskId;
+})->name('todo.change');
