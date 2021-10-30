@@ -19,9 +19,11 @@ Route::get('/', function () {
 
 Route::get('/todo', function(\Illuminate\Http\Request $request) {
     $tasks = \App\Models\Task::$data;
+    // dd($tasks);
     return view('index')->with('tasks', $tasks);
 })->name('todo.index');
 
 Route::post('/todo/add', function(\Illuminate\Http\Request $request) {
-    return "Route untuk menambah task baru";
+    $addTask = $request->get('input_task');
+    return "Menambahkan task: ". $addTask;
 })->name('todo.add');
