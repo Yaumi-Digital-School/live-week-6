@@ -27,3 +27,8 @@ Route::post('/todo/add', function(\Illuminate\Http\Request $request) {
     $addTask = $request->get('input_task');
     return "Menambahkan task: ". $addTask;
 })->name('todo.add');
+
+Route::get('/todo/change/{id}', function(\Illuminate\Http\Request $request,$id) {
+    
+    return "id yang diubah task id : ". $id;
+})->name('todo.add');
