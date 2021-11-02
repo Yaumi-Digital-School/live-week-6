@@ -23,5 +23,9 @@ Route::get('/todo', function(\Illuminate\Http\Request $request) {
 })->name('todo.index');
 
 Route::post('/todo/add', function(\Illuminate\Http\Request $request) {
-    return "Route untuk menambah task baru";
+    return "Data Task Baru : ".$request->input('input_task');
 })->name('todo.add');
+
+Route::get('/todo/update', function(\Illuminate\Http\Request $request) {
+    return "Data yang diubah memiliki ID : ".$request->input('task_id');
+})->name('todo.update');
